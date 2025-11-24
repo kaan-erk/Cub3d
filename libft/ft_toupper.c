@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktoraman < ktoraman@student.42istanbul.    +#+  +:+       +#+        */
+/*   By: ktoraman <ktoraman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/17 14:44:35 by ktoraman          #+#    #+#             */
-/*   Updated: 2025/11/24 15:20:22 by ktoraman         ###   ########.fr       */
+/*   Created: 2024/10/10 10:19:21 by ktoraman          #+#    #+#             */
+/*   Updated: 2024/10/21 16:41:03 by ktoraman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "inc/cub3d.h"
-
-int	main(int ac, char **av, char **env)
+int	ft_toupper(int c)
 {
-	if (ac == 2)
-		parse(av);
-	else
-		ft_putstr_fd("Wrong argument count!", 2);
+	if (c >= 'a' && c <= 'z')
+		c -= 32;
+	return (c);
 }

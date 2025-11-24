@@ -1,21 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktoraman < ktoraman@student.42istanbul.    +#+  +:+       +#+        */
+/*   By: ktoraman <ktoraman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/17 14:44:35 by ktoraman          #+#    #+#             */
-/*   Updated: 2025/11/24 15:20:22 by ktoraman         ###   ########.fr       */
+/*   Created: 2024/10/10 09:04:17 by ktoraman          #+#    #+#             */
+/*   Updated: 2024/10/22 17:35:40 by ktoraman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "inc/cub3d.h"
+#include "libft.h"
 
-int	main(int ac, char **av, char **env)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	if (ac == 2)
-		parse(av);
-	else
-		ft_putstr_fd("Wrong argument count!", 2);
+	unsigned int	i;
+
+	if (!dst && !src)
+		return (NULL);
+	i = 0;
+	while (i < n)
+	{
+		((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
+		i++;
+	}
+	return (dst);
 }

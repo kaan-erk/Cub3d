@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktoraman < ktoraman@student.42istanbul.    +#+  +:+       +#+        */
+/*   By: ktoraman <ktoraman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/17 14:44:35 by ktoraman          #+#    #+#             */
-/*   Updated: 2025/11/24 15:20:22 by ktoraman         ###   ########.fr       */
+/*   Created: 2024/10/08 17:37:09 by ktoraman          #+#    #+#             */
+/*   Updated: 2024/10/22 17:25:20 by ktoraman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "inc/cub3d.h"
+#include "libft.h"
 
-int	main(int ac, char **av, char **env)
+void	*ft_memset(void *b, int a, size_t c)
 {
-	if (ac == 2)
-		parse(av);
-	else
-		ft_putstr_fd("Wrong argument count!", 2);
+	size_t	i;
+
+	i = 0;
+	while (i < c)
+	{
+		((unsigned char *)b)[i] = (unsigned char)a;
+		i++;
+	}
+	return (b);
 }

@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktoraman < ktoraman@student.42istanbul.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/17 14:44:35 by ktoraman          #+#    #+#             */
-/*   Updated: 2025/11/24 15:20:22 by ktoraman         ###   ########.fr       */
+/*   Created: 2025/11/24 15:15:30 by ktoraman          #+#    #+#             */
+/*   Updated: 2025/11/24 15:21:36 by ktoraman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "inc/cub3d.h"
+#include "../inc/cub3d.h"
 
-int	main(int ac, char **av, char **env)
+void	parse(char **av)
 {
-	if (ac == 2)
-		parse(av);
-	else
-		ft_putstr_fd("Wrong argument count!", 2);
+	char	*name;
+	
+	name = av[1];
+	name_check(name);
 }

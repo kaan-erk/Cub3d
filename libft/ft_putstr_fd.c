@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktoraman < ktoraman@student.42istanbul.    +#+  +:+       +#+        */
+/*   By: ktoraman <ktoraman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/17 14:44:35 by ktoraman          #+#    #+#             */
-/*   Updated: 2025/11/24 15:20:22 by ktoraman         ###   ########.fr       */
+/*   Created: 2024/10/21 14:42:54 by ktoraman          #+#    #+#             */
+/*   Updated: 2024/10/21 16:46:36 by ktoraman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "inc/cub3d.h"
+#include "libft.h"
 
-int	main(int ac, char **av, char **env)
+void	ft_putstr_fd(char *s, int fd)
 {
-	if (ac == 2)
-		parse(av);
-	else
-		ft_putstr_fd("Wrong argument count!", 2);
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		write(fd, &s[i], 1);
+		i++;
+	}
 }
