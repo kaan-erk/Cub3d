@@ -7,15 +7,18 @@ CFLAGS = -Wall -Wextra -Werror -I./includes
 
 LIBFT = libft/libft.a
 
-PARSING = parse/parse.c \
+PARSING =	parse/parse.c \
 			parse/map_checker.c
-	
+
+SRC = 	src/get_next_line.c \
+		src/get_next_line_utils.c
 
 EXECUTE = \
 	
 
 SRCS = $(PARSING) \
 	   $(EXECUTE) \
+	   $(SRC) \
 	   main.c
 
 OBJS = $(SRCS:.c=.o)

@@ -6,7 +6,7 @@
 /*   By: ktoraman < ktoraman@student.42istanbul.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 14:42:41 by ktoraman          #+#    #+#             */
-/*   Updated: 2025/11/26 17:14:32 by ktoraman         ###   ########.fr       */
+/*   Updated: 2025/11/26 17:40:19 by ktoraman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@
 
 void	map_checker(char *name);
 void	parse(char **av);
+char	*get_next_line(int fd);
 
 #endif
