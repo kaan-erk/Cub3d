@@ -7,7 +7,8 @@ CFLAGS = -Wall -Wextra -Werror -I./includes
 
 LIBFT = libft/libft.a
 
-PARSING = \
+PARSING = parse/parse.c \
+			parse/map_checker.c
 	
 
 EXECUTE = \

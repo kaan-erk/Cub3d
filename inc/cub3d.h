@@ -6,7 +6,7 @@
 /*   By: ktoraman < ktoraman@student.42istanbul.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 14:42:41 by ktoraman          #+#    #+#             */
-/*   Updated: 2025/11/24 15:29:36 by ktoraman         ###   ########.fr       */
+/*   Updated: 2025/11/26 17:14:32 by ktoraman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,8 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <fcntl.h>
+
+void	map_checker(char *name);
+void	parse(char **av);
 
 #endif
