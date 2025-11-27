@@ -6,7 +6,7 @@
 /*   By: ktoraman < ktoraman@student.42istanbul.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 15:16:35 by ktoraman          #+#    #+#             */
-/*   Updated: 2025/11/26 17:59:45 by ktoraman         ###   ########.fr       */
+/*   Updated: 2025/11/27 15:58:02 by ktoraman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	name_check(char *name)
 
 	i = 0;
 	if (name[0] == '\0')
-		exit_error("Wrong argument count!", 1);
+		exit_error("Error: Names is NULL!", 1);
 	while (name[i] != '.')
 		i++;
 	if (ft_strncmp(name + i, ".cub", 4) == 0 && name[i + 4] == '\0')
@@ -37,33 +37,30 @@ static void	name_check(char *name)
 			return ;
 		}
 		else
-			exit_error("File can not open", 1);
+			exit_error("Error: File can not open", 1);
 	}
 	else
-		exit_error("Wrong file name", 1);
+		exit_error("Error: Wrong file name", 1);
 }
 
-static char	**map_allocate(char *name)
+static char	*cub_str_allocate(char *name)
 {
 	int		fd;
-	char	*map_str;
+	char	*cub_str;
 	char	*line;
-	char	**map;
 	
-	map_str = ft_strdup("");
+	cub_str = ft_strdup("");
 	fd = open(name, O_RDONLY);
 	while(1)
 	{
 		line = get_next_line(fd);
 		if (!line)
 			break ;
-		map_str = ft_strjoin(map_str, line);
+		cub_str = ft_strjoin(cub_str, line);
 		free(line);
 	}
 	close(fd);
-	map = ft_split(map_str, '\n');
-	free(map_str);
-	return (map);
+	return (cub_str);
 }
 
 void	print_map(char **map)//printer sil
@@ -81,9 +78,10 @@ void	print_map(char **map)//printer sil
 
 void	map_checker(char *name)
 {
-	char	**map;
+	char	*cub_str;
 
 	name_check(name);
-	map = map_allocate(name);// allocation var!
-	print_map(map);
+	cub_str = cub_str_allocate(name);// allocation var!
+	printf("After Cub3d Allocation!\n ************** \n");
+	printf("%s", cub_str);
 }
