@@ -17,6 +17,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include <stdlib.h>
 
 typedef struct	s_texture
 {
@@ -47,8 +48,9 @@ typedef struct	s_cub
 	t_game		game;
 }				t_cub;
 
-void	map_checker(char *name);
-void	parse(char **av);
+void	map_checker(char *name,	 t_cub *cub);
+void	parse(char **av, t_cub *cub);
 char	*get_next_line(int fd);
+void	init_cub(t_cub *cub);
 
 #endif

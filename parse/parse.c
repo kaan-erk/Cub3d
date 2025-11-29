@@ -12,10 +12,10 @@
 
 #include "../inc/cub3d.h"
 
-void	parse(char **av)
+void	parse(char **av, t_cub *cub)
 {
 	char	*name;
 	
 	name = av[1];
-	map_checker(name);
+	map_checker(name, cub);
 }

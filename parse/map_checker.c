@@ -76,12 +76,10 @@ void	print_map(char **map)//printer sil
 }
 
 
-void	map_checker(char *name)
+void	map_checker(char *name, t_cub *cub)
 {
-	char	*cub_str;
-
 	name_check(name);
-	cub_str = cub_str_allocate(name);// allocation var!
+	cub->game.map_str = cub_str_allocate(name);// allocation var!
 	printf("After Cub3d Allocation!\n ************** \n");
-	printf("%s", cub_str);
+	printf("%s\n", cub->game.map_str);
 }
