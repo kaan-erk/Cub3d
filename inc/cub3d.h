@@ -37,7 +37,9 @@ typedef struct	s_game
 {
 	char	**map;
 	char	*map_str;
+	char	*real_map_str;
 	int		player_c;
+	int		newline_c;
 	char	player;
 }				t_game;
 
@@ -51,6 +53,9 @@ typedef struct	s_cub
 void	map_checker(char *name,	 t_cub *cub);
 void	parse(char **av, t_cub *cub);
 char	*get_next_line(int fd);
+void	cub_texture_allocate(t_cub *cub);
+void	init_texture_floor(t_cub *cub, int *i);
+void	init_texture_ceiling(t_cub *cub, int *i);
 void	init_cub(t_cub *cub);
 
 #endif

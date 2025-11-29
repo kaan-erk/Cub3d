@@ -34,13 +34,15 @@ void init_cub(t_cub *cub)
 	}
 	cub->game.map[0] = NULL;
 	cub->game.map_str = ft_calloc(1, sizeof(char));
-	if (!cub->game.map_str)
+	cub->game.real_map_str = ft_calloc(1, sizeof(char));
+	if (!cub->game.map_str || !cub->game.real_map_str)
 	{
 		free(cub->game.map);
 		ft_putstr_fd("Error: Memory allocation failed\n", 2);
 		exit(EXIT_FAILURE);
 	}
 	cub->game.player_c = 0;
+	cub->game.newline_c = 0;
 	cub->game.player = 0;
 }
 

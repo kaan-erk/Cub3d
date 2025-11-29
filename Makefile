@@ -8,7 +8,9 @@ CFLAGS = -Wall -Wextra -Werror -I./includes
 LIBFT = libft/libft.a
 
 PARSING =	parse/parse.c \
-			parse/map_checker.c
+			parse/map_checker.c \
+			parse/map_texture.c \
+			parse/floor_ceiling.c
 
 SRC = 	src/get_next_line.c \
 		src/get_next_line_utils.c
