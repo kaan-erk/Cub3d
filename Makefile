@@ -10,7 +10,8 @@ LIBFT = libft/libft.a
 PARSING =	parse/parse.c \
 			parse/map_checker.c \
 			parse/map_texture.c \
-			parse/floor_ceiling.c
+			parse/floor_ceiling.c \
+			parse/parse_error.c
 
 SRC = 	src/get_next_line.c \
 		src/get_next_line_utils.c

@@ -18,6 +18,7 @@ void	parse(char **av, t_cub *cub)
 	
 	name = av[1];
 	map_checker(name, cub);
+	cub_texture_error(cub);
 	//hepsi silinecek
 	printf("After Cub3d Allocation!\n ************** \n");
 	printf("%s\n", cub->game.map_str);

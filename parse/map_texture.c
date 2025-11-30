@@ -92,9 +92,10 @@ void    cub_texture_allocate(t_cub *cub)
 			init_texture_ceiling(cub, &i);
 		else if (cub->game.map_str[i] == '\n' || cub->game.map_str[i] == ' ')
 			cub->game.newline_c++;
+		else if (cub->game.map_str[i] != '1' && cub->game.map_str[i] != '0' && cub->game.map_str[i] != '\n' )
+			exit_free_cub("Error: Wrong texture format", 1, cub);
 		else if (cub->game.map_str[i] == '1')
 			break ;
 		i++;
-		//buraya hata yakalama init edeceğiz 
 	}
 }

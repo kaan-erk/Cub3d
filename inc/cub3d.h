@@ -56,6 +56,8 @@ char	*get_next_line(int fd);
 void	cub_texture_allocate(t_cub *cub);
 void	init_texture_floor(t_cub *cub, int *i);
 void	init_texture_ceiling(t_cub *cub, int *i);
+void	exit_free_cub(char *msg, int i, t_cub *cub);
+void	cub_texture_error(t_cub *cub);
 void	init_cub(t_cub *cub);
 
 #endif
