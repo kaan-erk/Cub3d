@@ -6,7 +6,7 @@
 /*   By: ktoraman < ktoraman@student.42istanbul.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 14:42:41 by ktoraman          #+#    #+#             */
-/*   Updated: 2025/11/27 16:17:37 by ktoraman         ###   ########.fr       */
+/*   Updated: 2025/12/03 17:38:25 by ktoraman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	cub_texture_allocate(t_cub *cub);
 void	init_texture_floor(t_cub *cub, int *i);
 void	init_texture_ceiling(t_cub *cub, int *i);
 void	exit_free_cub(char *msg, int i, t_cub *cub);
+void    cub_fc_error(t_cub  *cub);
 void	cub_texture_error(t_cub *cub);
 void	init_cub(t_cub *cub);
 

@@ -6,7 +6,7 @@
 /*   By: ktoraman < ktoraman@student.42istanbul.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 15:15:30 by ktoraman          #+#    #+#             */
-/*   Updated: 2025/11/26 17:11:31 by ktoraman         ###   ########.fr       */
+/*   Updated: 2025/12/03 17:40:26 by ktoraman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	parse(char **av, t_cub *cub)
 	name = av[1];
 	map_checker(name, cub);
 	cub_texture_error(cub);
+	cub_fc_error(cub);
 	//hepsi silinecek
 	printf("After Cub3d Allocation!\n ************** \n");
 	printf("%s\n", cub->game.map_str);
