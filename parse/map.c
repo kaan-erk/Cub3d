@@ -6,13 +6,13 @@
 /*   By: ktoraman < ktoraman@student.42istanbul.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 20:11:13 by ktoraman          #+#    #+#             */
-/*   Updated: 2025/12/08 17:18:46 by ktoraman         ###   ########.fr       */
+/*   Updated: 2025/12/08 17:31:27 by ktoraman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
-static void	character_check(t_cub *cub)
+static void	player_check(t_cub *cub)
 {
 	int	i;
 
@@ -40,7 +40,24 @@ static void	character_check(t_cub *cub)
 		exit_free_cub("Error: Missing player!", 1, cub);
 }
 
+void	invalid_character_check(t_cub *cub)
+{
+	int	i;
+
+	i = 0;
+	while (cub->game.real_map_str[i])
+	{
+		if (!(cub->game.real_map_str[i] == 'N' || cub->game.real_map_str[i] == 'W'
+			|| cub->game.real_map_str[i] == 'E' || cub->game.real_map_str[i] == 'S'
+			|| cub->game.real_map_str[i] == '1' || cub->game.real_map_str[i] == '0'
+			|| cub->game.real_map_str[i] == ' ' || cub->game.real_map_str[i] == '\n'))
+			exit_free_cub("Error: Invalid character!", 1, cub);
+		i++;
+	}
+}
+
 void	cub_map_error(t_cub *cub)
 {
-	character_check(cub);	
+	player_check(cub);
+	invalid_character_check(cub);
 }
