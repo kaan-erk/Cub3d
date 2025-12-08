@@ -6,7 +6,7 @@
 /*   By: ktoraman < ktoraman@student.42istanbul.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 20:11:13 by ktoraman          #+#    #+#             */
-/*   Updated: 2025/12/08 17:31:27 by ktoraman         ###   ########.fr       */
+/*   Updated: 2025/12/08 17:39:45 by ktoraman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,13 @@ void	invalid_character_check(t_cub *cub)
 			|| cub->game.real_map_str[i] == '1' || cub->game.real_map_str[i] == '0'
 			|| cub->game.real_map_str[i] == ' ' || cub->game.real_map_str[i] == '\n'))
 			exit_free_cub("Error: Invalid character!", 1, cub);
+		i++;
+	}
+	i = 0;
+	while (cub->game.real_map_str[i])
+	{
+		if (cub->game.real_map_str[i] == '\n' && cub->game.real_map_str[i + 1] == '\n')
+			exit_free_cub("Error: Extra newline in map!", 1, cub);
 		i++;
 	}
 }
