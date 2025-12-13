@@ -1,9 +1,9 @@
-NAME = cub3d
+NAME = cub3D
 
 CC = cc -g
 RM = rm -f
 
-CFLAGS = -Wall -Wextra -Werror -I./includes
+CFLAGS = -Wall -Wextra -Werror -I./includes -fsanitize=address
 
 LIBFT = libft/libft.a
 

@@ -45,7 +45,7 @@ void    init_texture_ceiling(t_cub *cub, int *i)
 	cub->game.newline_c++;
 }
 
-void	int_check_fc(char **floor, char **ceiling, t_cub *cub)
+static int	int_check_fc(char **floor, char **ceiling)
 {
 	int	i;
 	int	j;
@@ -54,21 +54,39 @@ void	int_check_fc(char **floor, char **ceiling, t_cub *cub)
 	while (i < 3)
 	{
 		j = 0;
+		if (!floor[i] || !ceiling[i])
+			return (0);
 		while (floor[i][j])
 		{
 			if (!('0' <= floor[i][j] && '9' >= floor[i][j]))
-				exit_free_cub("Error: Something wrong with floor!", 1, cub);
+				return (0);
 			j++;
 		}
 		j = 0;
 		while (ceiling[i][j])
 		{
 			if (!('0' <= ceiling[i][j] && '9' >= ceiling[i][j]))
-				exit_free_cub("Error: Something wrong with ceiling!", 1, cub);
+				return (0);
 			j++;
 		}
 		i++;
 	}
+	return (1);
+}
+
+static void	free_split(char **arr)
+{
+	int i;
+
+	if (!arr)
+		return ;
+	i = 0;
+	while (arr[i])
+	{
+		free(arr[i]);
+		i++;
+	}
+	free(arr);
 }
 
 void	cub_fc_error(t_cub  *cub)
@@ -80,17 +98,46 @@ void	cub_fc_error(t_cub  *cub)
 	i = 0;
 	temp_floor = ft_split(cub->texture.f, ',');
 	temp_ceiling = ft_split(cub->texture.c, ',');
+	if (!temp_floor || !temp_ceiling)
+	{
+		free_split(temp_floor);
+		free_split(temp_ceiling);
+		exit_free_cub("Error: Memory allocation failed", 1, cub);
+	}
 	if (temp_floor[3] != NULL)
+	{
+		free_split(temp_floor);
+		free_split(temp_ceiling);
 		exit_free_cub("Error: Something wrong with floor!", 1, cub);
+	}
 	if (temp_ceiling[3] != NULL)
+	{
+		free_split(temp_floor);
+		free_split(temp_ceiling);
 		exit_free_cub("Error: Something wrong with ceiling!", 1, cub);
-	int_check_fc(temp_floor, temp_ceiling, cub);
+	}
+	if (!int_check_fc(temp_floor, temp_ceiling))
+	{
+		free_split(temp_floor);
+		free_split(temp_ceiling);
+		exit_free_cub("Error: Something wrong with floor/ceiling!", 1, cub);
+	}
 	while (i < 3)
 	{
 		if (!(0 <= ft_atoi(temp_floor[i]) && ft_atoi(temp_floor[i]) <= 255))
+		{
+			free_split(temp_floor);
+			free_split(temp_ceiling);
 			exit_free_cub("Error: Something wrong with floor!", 1, cub);
-		if (!(0 <= ft_atoi(temp_floor[i]) && ft_atoi(temp_floor[i]) <= 255))
+		}
+		if (!(0 <= ft_atoi(temp_ceiling[i]) && ft_atoi(temp_ceiling[i]) <= 255))
+		{
+			free_split(temp_floor);
+			free_split(temp_ceiling);
 			exit_free_cub("Error: Something wrong with ceiling!", 1, cub);
+		}
 		i++;
 	}
+	free_split(temp_floor);
+	free_split(temp_ceiling);
 }

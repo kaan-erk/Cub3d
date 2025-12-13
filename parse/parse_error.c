@@ -14,6 +14,10 @@
 
 void    free_cub(t_cub *cub)
 {
+    int i;
+
+    if (!cub)
+        return ;
     if (cub->texture.north)
         free(cub->texture.north);
     if (cub->texture.south)
@@ -28,7 +32,7 @@ void    free_cub(t_cub *cub)
         free(cub->texture.c);
     if (cub->game.map)
     {
-        int i = 0;
+        i = 0;
         while (cub->game.map[i])
         {
             free(cub->game.map[i]);
@@ -40,6 +44,7 @@ void    free_cub(t_cub *cub)
         free(cub->game.map_str);
     if (cub->game.real_map_str)
         free(cub->game.real_map_str);
+    free(cub);
 }
 
 int    is_xpm(char *str)

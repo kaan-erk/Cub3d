@@ -48,15 +48,18 @@ static char	*cub_str_allocate(char *name)
 	int		fd;
 	char	*cub_str;
 	char	*line;
-	
+	char *tmp;
+
 	cub_str = ft_strdup("");
 	fd = open(name, O_RDONLY);
-	while(1)
+	while (1)
 	{
 		line = get_next_line(fd);
 		if (!line)
 			break ;
-		cub_str = ft_strjoin(cub_str, line);
+		tmp = ft_strjoin(cub_str, line);
+		free(cub_str);
+		cub_str = tmp;
 		free(line);
 	}
 	close(fd);

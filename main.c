@@ -14,8 +14,6 @@
 
 void init_cub(t_cub *cub)
 {
-	if (!cub)
-		return;
 	cub->texture.north = NULL;
 	cub->texture.south = NULL;
 	cub->texture.east = NULL;
@@ -26,21 +24,9 @@ void init_cub(t_cub *cub)
 	cub->texture.w_flag = 0;
 	cub->texture.f = NULL;
 	cub->texture.c = NULL;
-	cub->game.map = ft_calloc(1, sizeof(char *));
-	if (!cub->game.map)
-	{
-		ft_putstr_fd("Error: Memory allocation failed\n", 2);
-		exit(EXIT_FAILURE);
-	}
-	cub->game.map[0] = NULL;
-	cub->game.map_str = ft_calloc(1, sizeof(char));
-	cub->game.real_map_str = ft_calloc(1, sizeof(char));
-	if (!cub->game.map_str || !cub->game.real_map_str)
-	{
-		free(cub->game.map);
-		ft_putstr_fd("Error: Memory allocation failed\n", 2);
-		exit(EXIT_FAILURE);
-	}
+	cub->game.map = NULL;
+	cub->game.map_str = NULL;
+	cub->game.real_map_str = NULL;
 	cub->game.player_c = 0;
 	cub->game.newline_c = 0;
 	cub->game.player = 0;
@@ -48,11 +34,18 @@ void init_cub(t_cub *cub)
 
 int	main(int ac, char **av)
 {
-	t_cub	cub;
+	t_cub	*cub;
 
-	init_cub(&cub);
+	cub = ft_calloc(1, sizeof(t_cub));
+	if (!cub)
+	{
+		ft_putstr_fd("Error: Memory allocation failed\n", 2);
+		exit(EXIT_FAILURE);
+	}
+	init_cub(cub);
 	if (ac == 2)
-		parse(av, &cub);
+		parse(av, cub);
 	else
 		ft_putendl_fd("Error: Wrong argument count!", 2);
+	printf("BAŞARILI\n");
 }
