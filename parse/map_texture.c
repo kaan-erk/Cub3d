@@ -88,7 +88,10 @@ void    cub_texture_allocate(t_cub *cub)
 	int i;
 
 	i = 0;
-	while (cub->game.map_str && *cub->game.map_str)
+	if (!cub->game.map_str)
+		return ;
+	int len = ft_strlen(cub->game.map_str);
+	while (i < len)
 	{
 		if (ft_strncmp(cub->game.map_str + i, "NO ", 3) == 0 && cub->texture.n_flag == 0)
 			init_texture_north(cub, &i);

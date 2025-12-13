@@ -23,6 +23,8 @@ void    init_texture_floor(t_cub *cub, int *i)
 		start++;
 	while (cub->game.map_str[start + j - 1] != '\n' && cub->game.map_str[start + j -1] != '\0')
 		j++;
+	if (cub->texture.f)
+		free(cub->texture.f);
 	cub->texture.f = ft_substr(cub->game.map_str, start, j - 1);
 	*i = start + j - 1;
 	cub->game.newline_c++;
@@ -40,6 +42,8 @@ void    init_texture_ceiling(t_cub *cub, int *i)
 		start++;
 	while (cub->game.map_str[start + j - 1] != '\n' && cub->game.map_str[start + j -1] != '\0')
 		j++;
+	if (cub->texture.c)
+		free(cub->texture.c);
 	cub->texture.c = ft_substr(cub->game.map_str, start, j - 1);
 	*i = start + j - 1;
 	cub->game.newline_c++;
@@ -104,13 +108,20 @@ void	cub_fc_error(t_cub  *cub)
 		free_split(temp_ceiling);
 		exit_free_cub("Error: Memory allocation failed", 1, cub);
 	}
-	if (temp_floor[3] != NULL)
+	/* ensure exactly 3 components for floor and ceiling */
+	int floor_count = 0;
+	int ceil_count = 0;
+	while (temp_floor[floor_count])
+		floor_count++;
+	while (temp_ceiling[ceil_count])
+		ceil_count++;
+	if (floor_count != 3)
 	{
 		free_split(temp_floor);
 		free_split(temp_ceiling);
 		exit_free_cub("Error: Something wrong with floor!", 1, cub);
 	}
-	if (temp_ceiling[3] != NULL)
+	if (ceil_count != 3)
 	{
 		free_split(temp_floor);
 		free_split(temp_ceiling);

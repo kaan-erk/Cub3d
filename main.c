@@ -46,6 +46,6 @@ int	main(int ac, char **av)
 	if (ac == 2)
 		parse(av, cub);
 	else
-		ft_putendl_fd("Error: Wrong argument count!", 2);
+		exit_free_cub("Error: Wrong number of arguments!", 1, cub);
 	printf("BAŞARILI\n");
 }
