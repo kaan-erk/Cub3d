@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktoraman < ktoraman@student.42istanbul.    +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 14:44:35 by ktoraman          #+#    #+#             */
-/*   Updated: 2025/11/27 15:54:44 by ktoraman         ###   ########.fr       */
+/*   Updated: 2025/12/14 02:56:52 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,19 @@ int	main(int ac, char **av)
 		parse(av, cub);
 	else
 		exit_free_cub("Error: Wrong number of arguments!", 1, cub);
+	
+	printf("\n");
+	
+	// int i = 0;
+	// while (cub->game.map[i])
+	// {
+	// 	printf("%s\n", cub->game.map[i]);
+	// 	i++;
+	// }
+
+	// ayrı fonksiyonlaştır
+	player_pos(cub);
+	player_dir(cub);
+	initialize_mlx(cub);
 	printf("BAŞARILI\n");
 }

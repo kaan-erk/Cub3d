@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktoraman < ktoraman@student.42istanbul.    +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 14:42:41 by ktoraman          #+#    #+#             */
-/*   Updated: 2025/12/03 20:13:30 by ktoraman         ###   ########.fr       */
+/*   Updated: 2025/12/14 03:35:46 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,12 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <stdlib.h>
+#include "../minilibx-linux/mlx.h"
+#include <math.h>
+
+#define WIDTH 640
+#define HEIGHT 480
+#define TITLE "cub3d"
 
 typedef struct	s_texture
 {
@@ -43,11 +49,51 @@ typedef struct	s_game
 	char	player;
 }				t_game;
 
+typedef struct s_data
+{
+    void    *mlx;
+    void    *win;
+    void    *img;
+    char    *addr;
+    int     bpp;
+    int     line_len;
+    int     endian;
+} t_data;
+
+typedef struct s_player
+{
+    double  pos_x;  
+    double  pos_y;
+    double  dir_x;
+    double  dir_y;
+    double  plane_x;
+    double  plane_y;
+} t_player;
+
+typedef struct s_ray
+{
+	double	camera_x;
+    double  rayDirX;
+    double  rayDirY;
+    int     mapX;
+    int     mapY;
+    double  sideDistX;
+    double  sideDistY;
+    double  deltaDistX;
+    double  deltaDistY;
+    int     stepX;
+    int     stepY;
+    double  perpWallDist;
+    int     side; 
+} t_ray;
 
 typedef struct	s_cub
 {
 	t_texture	texture;
 	t_game		game;
+	t_player	player;
+	t_data		data;
+	t_ray		ray;
 }				t_cub;
 
 void	map_checker(char *name,	 t_cub *cub);
@@ -61,5 +107,9 @@ void    cub_fc_error(t_cub  *cub);
 void	cub_texture_error(t_cub *cub);
 void	init_cub(t_cub *cub);
 void	cub_map_error(t_cub *cub);
+
+void player_pos(t_cub *cub);
+void    player_dir(t_cub *cub);
+void initialize_mlx(t_cub *cub);
 
 #endif
