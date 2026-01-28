@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ysoyturk <ysoyturk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 14:42:41 by ktoraman          #+#    #+#             */
-/*   Updated: 2025/12/14 03:35:46 by marvin           ###   ########.fr       */
+/*   Updated: 2026/01/28 16:48:25 by ysoyturk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 #include "../minilibx-linux/mlx.h"
 #include <math.h>
 
-#define WIDTH 640
-#define HEIGHT 480
+#define WIDTH 1920
+#define HEIGHT 1080
 #define TITLE "cub3d"
 
 typedef struct	s_texture
@@ -62,7 +62,7 @@ typedef struct s_data
 
 typedef struct s_player
 {
-    double  pos_x;  
+    double  pos_x;
     double  pos_y;
     double  dir_x;
     double  dir_y;
@@ -84,7 +84,7 @@ typedef struct s_ray
     int     stepX;
     int     stepY;
     double  perpWallDist;
-    int     side; 
+    int     side;
 } t_ray;
 
 typedef struct	s_cub
