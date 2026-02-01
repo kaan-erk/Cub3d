@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysoyturk <ysoyturk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 14:44:35 by ktoraman          #+#    #+#             */
-/*   Updated: 2026/01/28 16:10:37 by ysoyturk         ###   ########.fr       */
+/*   Updated: 2026/02/01 22:12:45 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ int	main(int ac, char **av)
 		parse(av, cub);
 	else
 		exit_free_cub("Error: Wrong number of arguments!", 1, cub);
-
 	printf("\n");
 	
 	// int i = 0;

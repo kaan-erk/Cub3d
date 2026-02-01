@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysoyturk <ysoyturk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 14:42:41 by ktoraman          #+#    #+#             */
-/*   Updated: 2026/01/28 16:48:25 by ysoyturk         ###   ########.fr       */
+/*   Updated: 2026/02/01 22:51:24 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,19 @@
 #include "../minilibx-linux/mlx.h"
 #include <math.h>
 
-#define WIDTH 1920
-#define HEIGHT 1080
+#define WIDTH 640
+#define HEIGHT 480
 #define TITLE "cub3d"
+#define TEX_WIDTH 64
+#define TEX_HEIGHT 64
+
+typedef enum
+{
+    EAST,
+    NORTH,
+    WEST,
+    SOUTH
+} texture;
 
 typedef struct	s_texture
 {
@@ -47,6 +57,8 @@ typedef struct	s_game
 	int		player_c;
 	int		newline_c;
 	char	player;
+    int     map_width;
+    int     map_height;
 }				t_game;
 
 typedef struct s_data
@@ -85,6 +97,7 @@ typedef struct s_ray
     int     stepY;
     double  perpWallDist;
     int     side;
+    int     text_num;
 } t_ray;
 
 typedef struct	s_cub
@@ -93,6 +106,10 @@ typedef struct	s_cub
 	t_game		game;
 	t_player	player;
 	t_data		data;
+    t_data  tex_n;
+    t_data  tex_s;
+    t_data  tex_e;
+    t_data  tex_w;
 	t_ray		ray;
 }				t_cub;
 
@@ -111,5 +128,6 @@ void	cub_map_error(t_cub *cub);
 void player_pos(t_cub *cub);
 void    player_dir(t_cub *cub);
 void initialize_mlx(t_cub *cub);
+void raycast(t_cub *cub);
 
 #endif

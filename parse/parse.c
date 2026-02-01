@@ -3,14 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktoraman < ktoraman@student.42istanbul.    +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 15:15:30 by ktoraman          #+#    #+#             */
-/*   Updated: 2025/12/03 20:10:50 by ktoraman         ###   ########.fr       */
+/*   Updated: 2026/02/01 22:54:11 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
+
+void map_height_width(t_cub *cub)
+{
+	int y = 0;
+
+	while(cub->game.map[y])
+		y++;
+	cub->game.map_height = y;
+
+	if (y > 0)
+		cub->game.map_width = ft_strlen(cub->game.map[0]);
+}
 
 void	parse(char **av, t_cub *cub)
 {
@@ -21,6 +33,7 @@ void	parse(char **av, t_cub *cub)
 	cub_texture_error(cub);
 	cub_fc_error(cub);
 	cub_map_error(cub);
+	map_height_width(cub);
 	/*hepsi silinecek
 	printf("After Cub3d Allocation!\n ************** \n");
 	printf("%s\n", cub->game.map_str);
