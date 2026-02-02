@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 15:15:30 by ktoraman          #+#    #+#             */
-/*   Updated: 2026/02/01 22:54:11 by marvin           ###   ########.fr       */
+/*   Updated: 2026/02/02 20:19:56 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void map_height_width(t_cub *cub)
 	if (y > 0)
 		cub->game.map_width = ft_strlen(cub->game.map[0]);
 }
+
+
 
 void	parse(char **av, t_cub *cub)
 {

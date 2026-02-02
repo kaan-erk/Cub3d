@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   floor_ceiling.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktoraman < ktoraman@student.42istanbul.    +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 20:11:48 by ktoraman          #+#    #+#             */
-/*   Updated: 2025/12/03 20:11:49 by ktoraman         ###   ########.fr       */
+/*   Updated: 2026/02/03 00:13:26 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,62 +93,67 @@ static void	free_split(char **arr)
 	free(arr);
 }
 
-void	cub_fc_error(t_cub  *cub)
+static int get_array_len(char **arr)
 {
-	int		i;
-	char	**temp_floor;
-	char	**temp_ceiling;
-
-	i = 0;
-	temp_floor = ft_split(cub->texture.f, ',');
-	temp_ceiling = ft_split(cub->texture.c, ',');
-	if (!temp_floor || !temp_ceiling)
-	{
-		free_split(temp_floor);
-		free_split(temp_ceiling);
-		exit_free_cub("Error: Memory allocation failed", 1, cub);
-	}
-	/* ensure exactly 3 components for floor and ceiling */
-	int floor_count = 0;
-	int ceil_count = 0;
-	while (temp_floor[floor_count])
-		floor_count++;
-	while (temp_ceiling[ceil_count])
-		ceil_count++;
-	if (floor_count != 3)
-	{
-		free_split(temp_floor);
-		free_split(temp_ceiling);
-		exit_free_cub("Error: Something wrong with floor!", 1, cub);
-	}
-	if (ceil_count != 3)
-	{
-		free_split(temp_floor);
-		free_split(temp_ceiling);
-		exit_free_cub("Error: Something wrong with ceiling!", 1, cub);
-	}
-	if (!int_check_fc(temp_floor, temp_ceiling))
-	{
-		free_split(temp_floor);
-		free_split(temp_ceiling);
-		exit_free_cub("Error: Something wrong with floor/ceiling!", 1, cub);
-	}
-	while (i < 3)
-	{
-		if (!(0 <= ft_atoi(temp_floor[i]) && ft_atoi(temp_floor[i]) <= 255))
-		{
-			free_split(temp_floor);
-			free_split(temp_ceiling);
-			exit_free_cub("Error: Something wrong with floor!", 1, cub);
-		}
-		if (!(0 <= ft_atoi(temp_ceiling[i]) && ft_atoi(temp_ceiling[i]) <= 255))
-		{
-			free_split(temp_floor);
-			free_split(temp_ceiling);
-			exit_free_cub("Error: Something wrong with ceiling!", 1, cub);
-		}
-		i++;
-	}
-	free_split(temp_floor);
-	free_split(temp_ceiling);
+    int i = 0;
+    while (arr[i])
+        i++;
+    return (i);
 }
+
+void    cub_fc_error(t_cub *cub)
+{
+    int     i;
+    char    **temp_floor;
+    char    **temp_ceiling;
+
+    temp_floor = ft_split(cub->texture.f, ',');
+    temp_ceiling = ft_split(cub->texture.c, ',');
+    if (!temp_floor || !temp_ceiling)
+    {
+        free_split(temp_floor);
+        free_split(temp_ceiling);
+        exit_free_cub("Error: Memory allocation failed", 1, cub);
+    }
+
+    if (get_array_len(temp_floor) != 3 || get_array_len(temp_ceiling) != 3)
+    {
+        free_split(temp_floor);
+        free_split(temp_ceiling);
+        exit_free_cub("Error: Floor or Ceiling must have 3 components (R,G,B)!", 1, cub);
+    }
+
+    if (!int_check_fc(temp_floor, temp_ceiling))
+    {
+        free_split(temp_floor);
+        free_split(temp_ceiling);
+        exit_free_cub("Error: Floor/Ceiling contains non-numeric characters!", 1, cub);
+    }
+
+    i = 0;
+    while (i < 3)
+    {
+        int f_val = ft_atoi(temp_floor[i]);
+        int c_val = ft_atoi(temp_ceiling[i]);
+
+        if (f_val < 0 || f_val > 255 || c_val < 0 || c_val > 255)
+        {
+            free_split(temp_floor);
+            free_split(temp_ceiling);
+            exit_free_cub("Error: RGB values must be between 0 and 255!", 1, cub);
+        }
+        i++;
+    }
+
+    cub->texture.floor = (ft_atoi(temp_floor[0]) << 16) | 
+                       (ft_atoi(temp_floor[1]) << 8) | 
+                       ft_atoi(temp_floor[2]);
+
+    cub->texture.ceiling = (ft_atoi(temp_ceiling[0]) << 16) | 
+                         (ft_atoi(temp_ceiling[1]) << 8) | 
+                         ft_atoi(temp_ceiling[2]);
+
+    free_split(temp_floor);
+    free_split(temp_ceiling);
+}
+
