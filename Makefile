@@ -24,6 +24,7 @@ SRC = src/get_next_line.c \
 EXECUTE = execute/player_information.c \
 			execute/mlx_starter.c \
 			execute/raycasting.c \
+			execute/movement.c 
 			
 
 SRCS = $(PARSING) \

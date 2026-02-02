@@ -13,8 +13,8 @@ void player_pos(t_cub *cub)
         {
             if (cub->game.map[i][j] == 'N' || cub->game.map[i][j] == 'S' || cub->game.map[i][j] == 'E' || cub->game.map[i][j] == 'W')
             {
-                cub->player.pos_y = j + 0.5;
-                cub->player.pos_x = i + 0.5;
+                cub->player.pos_x = j + 0.5;
+                cub->player.pos_y = i + 0.5;
             }
             j++;
         }

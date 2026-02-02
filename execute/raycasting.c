@@ -12,7 +12,7 @@ void raycast(t_cub *cub)
     int tex_y;
     double step;
     double tex_pos;
-    int tmp;
+    int y;
     t_data *tex;
     char *src;
     char *dst;
@@ -28,7 +28,7 @@ void raycast(t_cub *cub)
     step = 0;
     (void)tex_pos;
     tex = NULL;
-    tmp = 0;
+    y = 0;
     tex_y = 0;
     while (x < WIDTH)
     {
@@ -139,9 +139,16 @@ void raycast(t_cub *cub)
             tex = &cub->tex_e;
         else 
             tex = &cub->tex_w;
-
-        tmp = drawStart;
-        while (tmp < drawEnd)
+        y = 0;
+        while (y < drawStart)
+        {
+            dst = cub->data.addr + (y * cub->data.line_len + x * (cub->data.bpp / 8));
+            *(unsigned int *)dst = cub->texture.ceiling;
+            y++;
+        }
+        
+        y = drawStart;
+        while (y < drawEnd)
         {
             tex_y = (int)tex_pos & (TEX_HEIGHT - 1);
             tex_pos += step;
@@ -152,11 +159,18 @@ void raycast(t_cub *cub)
             if (cub->ray.side == 1)
                 color = (color >> 1) & 8355711;
 
-            dst = cub->data.addr + (tmp * cub->data.line_len + x * (cub->data.bpp / 8));
+            dst = cub->data.addr + (y * cub->data.line_len + x * (cub->data.bpp / 8));
             *(unsigned int *)dst = color;
-
-            tmp++;
+            y++;
         }
-        x++;    
+        
+        y = drawEnd;
+        while (y < HEIGHT)
+        {
+            dst = cub->data.addr + (y * cub->data.line_len + x * (cub->data.bpp / 8));
+            *(unsigned int *)dst = cub->texture.floor;
+            y++;
+        }
+        x++;
     }
 }

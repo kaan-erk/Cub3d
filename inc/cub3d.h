@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 14:42:41 by ktoraman          #+#    #+#             */
-/*   Updated: 2026/02/01 22:51:24 by marvin           ###   ########.fr       */
+/*   Updated: 2026/02/02 20:32:36 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,18 @@
 #define TITLE "cub3d"
 #define TEX_WIDTH 64
 #define TEX_HEIGHT 64
+
+#define W 119
+#define A 97
+#define S 115
+#define D 100
+#define ESC 65307
+#define LEFT 65363
+#define RIGHT 65361
+#define KEY_PRESS 2
+#define DESTROY 17
+
+#define SPEED 0.1
 
 typedef enum
 {
@@ -47,6 +59,8 @@ typedef struct	s_texture
 	int		w_flag;
 	char	*f;
 	char	*c;
+    unsigned int    floor;
+    unsigned int    ceiling;
 }				t_texture;
 
 typedef struct	s_game
@@ -129,5 +143,11 @@ void player_pos(t_cub *cub);
 void    player_dir(t_cub *cub);
 void initialize_mlx(t_cub *cub);
 void raycast(t_cub *cub);
+int close_press(int key_code, t_cub *cub);
+void movement_w(t_cub *cub);
+void movement_s(t_cub *cub);
+void movement_a(t_cub *cub);
+void movement_d(t_cub *cub);
+
 
 #endif
