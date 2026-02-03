@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 14:44:35 by ktoraman          #+#    #+#             */
-/*   Updated: 2026/02/01 22:12:45 by marvin           ###   ########.fr       */
+/*   Updated: 2026/02/03 19:08:11 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,6 @@ int	main(int ac, char **av)
 	player_pos(cub);
 	player_dir(cub);
 	initialize_mlx(cub);
+	close_press(cub);
 	printf("BAŞARILI\n");
 }

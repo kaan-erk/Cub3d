@@ -22,9 +22,10 @@ SRC = src/get_next_line.c \
 		src/get_next_line_utils.c
 
 EXECUTE = execute/player_information.c \
-			execute/mlx_starter.c \
+			execute/start_mlx.c \
 			execute/raycasting.c \
-			execute/movement.c 
+			execute/movement.c \
+			execute/rotate.c \
 			
 
 SRCS = $(PARSING) \

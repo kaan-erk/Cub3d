@@ -39,7 +39,6 @@ int game_loop(t_cub *cub)
 {
     raycast(cub);
     mlx_put_image_to_window(cub->data.mlx, cub->data.win, cub->data.img, 0, 0);
-
     return (0);
 }
 
@@ -54,16 +53,19 @@ int key_press(int key_code, t_cub *cub)
         movement_a(cub);    
     if (key_code == D)
         movement_d(cub);
+    if (key_code == LEFT)
+        rotate_left(cub);
+    if (key_code == RIGHT)
+        rotate_right(cub);
     if (key_code == ESC)
-        close_press(key_code, cub);
+        close_press(cub);
     return (0);
 }
 
-int close_press(int key_code, t_cub *cub)
+int close_press(t_cub *cub)
 {
-    exit(1);
     (void)cub;
-    printf("%d\n", key_code);
+    exit(0);
     return (0);
 }
 
@@ -75,7 +77,6 @@ void initialize_mlx(t_cub *cub)
     init_textures(cub);
     mlx_hook(cub->data.win, DESTROY, 1L << 17, close_press, cub);
     mlx_hook(cub->data.win, KEY_PRESS, 1L << 0, key_press, cub);
-
     mlx_loop_hook(cub->data.mlx, &game_loop, cub);
     mlx_loop(cub->data.mlx);
 }

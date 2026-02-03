@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 14:42:41 by ktoraman          #+#    #+#             */
-/*   Updated: 2026/02/02 20:32:36 by marvin           ###   ########.fr       */
+/*   Updated: 2026/02/03 19:03:34 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,15 @@
 #define S 115
 #define D 100
 #define ESC 65307
-#define LEFT 65363
-#define RIGHT 65361
+#define LEFT 65361
+#define RIGHT 65363
 #define KEY_PRESS 2
 #define DESTROY 17
 
-#define SPEED 0.1
+#define MOVE_SPEED 0.1
+#define ROT_SPEED 0.05
+
+#define MARGIN 0.2
 
 typedef enum
 {
@@ -143,11 +146,14 @@ void player_pos(t_cub *cub);
 void    player_dir(t_cub *cub);
 void initialize_mlx(t_cub *cub);
 void raycast(t_cub *cub);
-int close_press(int key_code, t_cub *cub);
+int close_press(t_cub *cub);
 void movement_w(t_cub *cub);
 void movement_s(t_cub *cub);
 void movement_a(t_cub *cub);
 void movement_d(t_cub *cub);
+void rotate_left(t_cub * cub);
+void rotate_right(t_cub * cub);
+int key_press(int key_code, t_cub *cub);
 
 
 #endif
