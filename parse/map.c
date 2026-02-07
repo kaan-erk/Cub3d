@@ -20,7 +20,8 @@ static void	player_check(t_cub *cub)
 	while (cub->game.real_map_str[i])
 	{
 		if (cub->game.real_map_str[i] == 'N' || cub->game.real_map_str[i] == 'W'
-			|| cub->game.real_map_str[i] == 'E' || cub->game.real_map_str[i] == 'S')
+			|| cub->game.real_map_str[i] == 'E'
+			|| cub->game.real_map_str[i] == 'S')
 		{
 			cub->game.player = cub->game.real_map_str[i];
 			cub->game.player_c = 1;
@@ -32,7 +33,8 @@ static void	player_check(t_cub *cub)
 	while (cub->game.real_map_str[i])
 	{
 		if (cub->game.real_map_str[i] == 'N' || cub->game.real_map_str[i] == 'W'
-			|| cub->game.real_map_str[i] == 'E' || cub->game.real_map_str[i] == 'S')
+			|| cub->game.real_map_str[i] == 'E'
+			|| cub->game.real_map_str[i] == 'S')
 			exit_free_cub("Error: More than one player!", 1, cub);
 		i++;
 	}
@@ -47,17 +49,22 @@ static void	invalid_character_check(t_cub *cub)
 	i = 0;
 	while (cub->game.real_map_str[i])
 	{
-		if (!(cub->game.real_map_str[i] == 'N' || cub->game.real_map_str[i] == 'W'
-			|| cub->game.real_map_str[i] == 'E' || cub->game.real_map_str[i] == 'S'
-			|| cub->game.real_map_str[i] == '1' || cub->game.real_map_str[i] == '0'
-			|| cub->game.real_map_str[i] == ' ' || cub->game.real_map_str[i] == '\n'))
+		if (!(cub->game.real_map_str[i] == 'N'
+				|| cub->game.real_map_str[i] == 'W'
+				|| cub->game.real_map_str[i] == 'E'
+				|| cub->game.real_map_str[i] == 'S'
+				|| cub->game.real_map_str[i] == '1'
+				|| cub->game.real_map_str[i] == '0'
+				|| cub->game.real_map_str[i] == ' '
+				|| cub->game.real_map_str[i] == '\n'))
 			exit_free_cub("Error: Invalid character!", 1, cub);
 		i++;
 	}
 	i = 0;
 	while (cub->game.real_map_str[i])
 	{
-		if (cub->game.real_map_str[i] == '\n' && cub->game.real_map_str[i + 1] == '\n')
+		if (cub->game.real_map_str[i] == '\n' && cub->game.real_map_str[i
+			+ 1] == '\n')
 			exit_free_cub("Error: Extra newline in map!", 1, cub);
 		i++;
 	}
@@ -107,7 +114,7 @@ void	find_player_pos(t_cub *cub, char **map_copy, int *px, int *py)
 {
 	int	i;
 	int	j;
-	
+
 	i = 0;
 	while (map_copy[i])
 	{
@@ -129,11 +136,11 @@ void	find_player_pos(t_cub *cub, char **map_copy, int *px, int *py)
 void	flood_fill_rec(t_cub *cub, char **map_copy, int x, int y)
 {
 	if (y < 0 || x < 0 || !map_copy[y] || !map_copy[y][x])
-	exit_free_cub("Error: Map is not closed!", 1, cub);
+		exit_free_cub("Error: Map is not closed!", 1, cub);
 	if (map_copy[y][x] == '1' || map_copy[y][x] == 'F' || map_copy[y][x] == '_')
-	return ;
+		return ;
 	if (map_copy[y][x] == ' ')
-	exit_free_cub("Error: Map is not closed!", 1, cub);
+		exit_free_cub("Error: Map is not closed!", 1, cub);
 	map_copy[y][x] = 'F';
 	flood_fill_rec(cub, map_copy, x + 1, y);
 	flood_fill_rec(cub, map_copy, x - 1, y);
@@ -173,12 +180,12 @@ static void	flood_fill(t_cub *cub, char **map_copy)
 static void	map_flood_fill(t_cub *cub)
 {
 	char	**map_copy;
-
+	int		i;
 
 	map_copy = normalize_map(cub);
 	flood_fill(cub, map_copy);
 	printf("Normalized Map:\n");
-	int i = 0;
+	i = 0;
 	while (map_copy[i])
 	{
 		printf("%s\n", map_copy[i]);

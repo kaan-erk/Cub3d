@@ -48,7 +48,7 @@ static char	*cub_str_allocate(char *name)
 	int		fd;
 	char	*cub_str;
 	char	*line;
-	char *tmp;
+	char	*tmp;
 
 	cub_str = ft_strdup("");
 	fd = open(name, O_RDONLY);
@@ -73,7 +73,7 @@ void	map_allocate(t_cub *cub)
 
 	i = 0;
 	passed_newline = 0;
-	while(cub->game.map_str[i] != '\0')
+	while (cub->game.map_str[i] != '\0')
 	{
 		if (passed_newline == cub->game.newline_c)
 			break ;
@@ -81,7 +81,8 @@ void	map_allocate(t_cub *cub)
 			passed_newline++;
 		i++;
 	}
-	cub->game.real_map_str = ft_substr(cub->game.map_str, i, ft_strlen(cub->game.map_str) - i);
+	cub->game.real_map_str = ft_substr(cub->game.map_str, i,
+			ft_strlen(cub->game.map_str) - i);
 }
 
 void	map_checker(char *name, t_cub *cub)

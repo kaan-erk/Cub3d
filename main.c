@@ -12,7 +12,7 @@
 
 #include "inc/cub3d.h"
 
-void init_cub(t_cub *cub)
+void	init_cub(t_cub *cub)
 {
 	cub->texture.north = NULL;
 	cub->texture.south = NULL;
@@ -53,3 +53,5 @@ int	main(int ac, char **av)
 	initialize_mlx(cub);
 	printf("BAŞARILI\n");
 }
+
+//  valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --suppressions=mlx.supp ./cub3D test.cub

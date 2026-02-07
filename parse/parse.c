@@ -12,24 +12,22 @@
 
 #include "../inc/cub3d.h"
 
-void map_height_width(t_cub *cub)
+void	map_height_width(t_cub *cub)
 {
-	int y = 0;
+	int	y;
 
-	while(cub->game.map[y])
+	y = 0;
+	while (cub->game.map[y])
 		y++;
 	cub->game.map_height = y;
-
 	if (y > 0)
 		cub->game.map_width = ft_strlen(cub->game.map[0]);
 }
 
-
-
 void	parse(char **av, t_cub *cub)
 {
-	char	*name;
-	
+	char *name;
+
 	name = av[1];
 	map_checker(name, cub);
 	cub_texture_error(cub);

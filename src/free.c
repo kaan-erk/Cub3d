@@ -1,27 +1,24 @@
 #include "../inc/cub3d.h"
 
-void free_double(char **double_str)
+void	free_double(char **double_str)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    if(!double_str)
-        return ;
-
-    while(double_str[i])
-    {
-        free(double_str[i]);
-        i++;
-    }
-    free(double_str);
+	i = 0;
+	if (!double_str)
+		return ;
+	while (double_str[i])
+	{
+		free(double_str[i]);
+		i++;
+	}
+	free(double_str);
 }
-
 
 void	clean_exit(t_cub *cub)
 {
 	if (!cub)
 		return ;
-
 	if (cub->texture.north)
 		free(cub->texture.north);
 	if (cub->texture.south)
@@ -35,15 +32,14 @@ void	clean_exit(t_cub *cub)
 	if (cub->texture.c)
 		free(cub->texture.c);
 	if (cub->game.map)
-    {
+	{
 		free_double(cub->game.map);
-        cub->game.map = NULL;
-    }
+		cub->game.map = NULL;
+	}
 	if (cub->game.map_str)
 		free(cub->game.map_str);
 	if (cub->game.real_map_str)
 		free(cub->game.real_map_str);
-
 	if (cub->data.mlx)
 	{
 		if (cub->tex_n.img)
@@ -56,13 +52,10 @@ void	clean_exit(t_cub *cub)
 			mlx_destroy_image(cub->data.mlx, cub->tex_w.img);
 		if (cub->data.img)
 			mlx_destroy_image(cub->data.mlx, cub->data.img);
-		
 		if (cub->data.win)
 			mlx_destroy_window(cub->data.mlx, cub->data.win);
-		
 		mlx_destroy_display(cub->data.mlx);
 		free(cub->data.mlx);
 	}
-
 	free(cub);
 }
