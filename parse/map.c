@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktoraman < ktoraman@student.42istanbul.    +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 20:11:13 by ktoraman          #+#    #+#             */
-/*   Updated: 2025/12/08 17:39:45 by ktoraman         ###   ########.fr       */
+/*   Updated: 2026/02/07 17:18:18 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,6 +174,7 @@ static void	map_flood_fill(t_cub *cub)
 {
 	char	**map_copy;
 
+
 	map_copy = normalize_map(cub);
 	flood_fill(cub, map_copy);
 	printf("Normalized Map:\n");
@@ -183,13 +184,17 @@ static void	map_flood_fill(t_cub *cub)
 		printf("%s\n", map_copy[i]);
 		i++;
 	}
+	free_double(map_copy);
 }
 
 void	cub_map_error(t_cub *cub)
 {
+	char **temp_split;
+
 	player_check(cub);
 	invalid_character_check(cub);
-	cub->game.map = ft_split(cub->game.real_map_str, '\n');
+	temp_split = ft_split(cub->game.real_map_str, '\n');
+	cub->game.map = temp_split;
 	if (!cub->game.map)
 		exit_free_cub("Error: Memory allocation failed\n", 1, cub);
 	map_flood_fill(cub);

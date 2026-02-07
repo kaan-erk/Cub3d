@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 14:42:41 by ktoraman          #+#    #+#             */
-/*   Updated: 2026/02/03 19:03:34 by marvin           ###   ########.fr       */
+/*   Updated: 2026/02/07 17:12:54 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,6 +154,8 @@ void movement_d(t_cub *cub);
 void rotate_left(t_cub * cub);
 void rotate_right(t_cub * cub);
 int key_press(int key_code, t_cub *cub);
+void free_double(char **double_str);
+void	clean_exit(t_cub *cub);
 
 
 #endif

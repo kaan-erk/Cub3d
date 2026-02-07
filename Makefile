@@ -19,7 +19,8 @@ PARSING =  parse/parse.c \
 			parse/map.c
 
 SRC = src/get_next_line.c \
-		src/get_next_line_utils.c
+		src/get_next_line_utils.c \
+		src/free.c
 
 EXECUTE = execute/player_information.c \
 			execute/start_mlx.c \

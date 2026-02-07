@@ -1,0 +1,31 @@
+{
+   MLX_Internal_Errors
+   Memcheck:Leak
+   match-leak-kinds: all
+   ...
+   obj:*/usr/lib/x86_64-linux-gnu/libX11.so.*
+   ...
+}
+{
+   MLX_Internal_Errors_2
+   Memcheck:Leak
+   match-leak-kinds: all
+   ...
+   obj:*/usr/lib/x86_64-linux-gnu/libXext.so.*
+   ...
+}
+{
+   MLX_Specific_Suppression
+   Memcheck:Leak
+   match-leak-kinds: all
+   ...
+   fun:mlx_*
+   ...
+}
+{
+   MLX_Writev_Uninit
+   Memcheck:Param
+   writev(vector[...])
+   ...
+   obj:/usr/lib/x86_64-linux-gnu/libxcb.so*
+}

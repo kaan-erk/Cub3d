@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktoraman < ktoraman@student.42istanbul.    +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 20:11:58 by ktoraman          #+#    #+#             */
-/*   Updated: 2025/12/03 20:11:59 by ktoraman         ###   ########.fr       */
+/*   Updated: 2026/02/07 17:07:52 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void    free_cub(t_cub *cub)
             i++;
         }
         free(cub->game.map);
+        cub->game.map = NULL;
     }
     if (cub->game.map_str)
         free(cub->game.map_str);

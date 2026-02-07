@@ -64,7 +64,8 @@ int key_press(int key_code, t_cub *cub)
 
 int close_press(t_cub *cub)
 {
-    (void)cub;
+    printf("CLOSE GAME");
+	clean_exit(cub);
     exit(0);
     return (0);
 }
