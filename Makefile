@@ -27,7 +27,8 @@ EXECUTE = execute/player_information.c \
 			execute/raycasting.c \
 			execute/movement.c \
 			execute/rotate.c \
-			execute/loop_mlx.c 
+			execute/loop_mlx.c \
+			execute/ray_func.c
 			
 
 SRCS = $(PARSING) \

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ysoyturk <ysoyturk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 14:42:41 by ktoraman          #+#    #+#             */
-/*   Updated: 2026/02/07 19:21:04 by marvin           ###   ########.fr       */
+/*   Updated: 2026/02/12 16:59:34 by ysoyturk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# define WIDTH 640
-# define HEIGHT 480
+# define WIDTH 960
+# define HEIGHT 540
 # define TITLE "cub3d"
 # define TEX_WIDTH 64
 # define TEX_HEIGHT 64
@@ -115,6 +115,13 @@ typedef struct s_ray
 	double			perp_wall_dist;
 	int				side;
 	int				text_num;
+	// yenileri
+	int             line_height;
+    int             draw_start;
+    int             draw_end;
+    int             tex_x;
+    double          step;
+    double          tex_pos;
 }					t_ray;
 
 typedef struct s_cub
@@ -130,32 +137,37 @@ typedef struct s_cub
 	t_ray			ray;
 }					t_cub;
 
-void				map_checker(char *name, t_cub *cub);
-void				parse(char **av, t_cub *cub);
-char				*get_next_line(int fd);
-void				cub_texture_allocate(t_cub *cub);
-void				init_texture_floor(t_cub *cub, int *i);
-void				init_texture_ceiling(t_cub *cub, int *i);
-void				exit_free_cub(char *msg, int i, t_cub *cub);
-void				cub_fc_error(t_cub *cub);
-void				cub_texture_error(t_cub *cub);
-void				init_cub(t_cub *cub);
-void				cub_map_error(t_cub *cub);
-
-void				player_pos(t_cub *cub);
-void				player_dir(t_cub *cub);
-void				initialize_mlx(t_cub *cub);
-void				raycast(t_cub *cub);
-int					close_press(t_cub *cub);
-void				movement_w(t_cub *cub);
-void				movement_s(t_cub *cub);
-void				movement_a(t_cub *cub);
-void				movement_d(t_cub *cub);
-void				rotate_left(t_cub *cub);
-void				rotate_right(t_cub *cub);
-int					key_press(int key_code, t_cub *cub);
-void				free_double(char **double_str);
-void				clean_exit(t_cub *cub);
-int					game_loop(t_cub *cub);
+void	map_checker(char *name, t_cub *cub);
+void	parse(char **av, t_cub *cub);
+char	*get_next_line(int fd);
+void	cub_texture_allocate(t_cub *cub);
+void	init_texture_floor(t_cub *cub, int *i);
+void	init_texture_ceiling(t_cub *cub, int *i);
+void	exit_free_cub(char *msg, int i, t_cub *cub);
+void	cub_fc_error(t_cub *cub);
+void	cub_texture_error(t_cub *cub);
+void	init_cub(t_cub *cub);
+void	cub_map_error(t_cub *cub);
+void	player_pos(t_cub *cub);
+void	player_dir(t_cub *cub);
+void	initialize_mlx(t_cub *cub);
+void	raycast(t_cub *cub);
+int		close_press(t_cub *cub);
+void	movement_w(t_cub *cub);
+void	movement_s(t_cub *cub);
+void	movement_a(t_cub *cub);
+void	movement_d(t_cub *cub);
+void	rotate_left(t_cub *cub);
+void	rotate_right(t_cub *cub);
+int		key_press(int key_code, t_cub *cub);
+void	free_double(char **double_str);
+void	clean_exit(t_cub *cub);
+int		game_loop(t_cub *cub);
+void	init_ray(t_cub *cub, int x);
+void	calc_step(t_cub *cub);
+void	perform_dda(t_cub *cub);
+void	calc_wall_metrics(t_cub *cub);
+void	calc_tex_coords(t_cub *cub);
+void	raycast(t_cub *cub);
 
 #endif
