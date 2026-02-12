@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ysoyturk <ysoyturk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 14:44:35 by ktoraman          #+#    #+#             */
-/*   Updated: 2026/02/07 17:02:06 by marvin           ###   ########.fr       */
+/*   Updated: 2026/02/12 20:23:55 by ysoyturk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,5 @@ int	main(int ac, char **av)
 	printf("BAŞARILI\n");
 }
 
-//  valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --suppressions=mlx.supp ./cub3D test.cub
+// valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes 
+// --suppressions=mlx.supp ./cub3D test.cub
