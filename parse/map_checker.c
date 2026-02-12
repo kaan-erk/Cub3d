@@ -18,14 +18,14 @@ void	exit_error(char *msg, int i)
 	exit(i);
 }
 
-static void	name_check(char *name)
+static void	name_check(char *name, t_cub *cub)
 {
 	int	i;
 	int	fd;
 
 	i = 0;
 	if (name[0] == '\0')
-		exit_error("Error: Names is NULL!", 1);
+		exit_free_cub("Error: Wrong file name", 1, cub);
 	while (name[i] != '.')
 		i++;
 	if (ft_strncmp(name + i, ".cub", 4) == 0 && name[i + 4] == '\0')
@@ -37,10 +37,10 @@ static void	name_check(char *name)
 			return ;
 		}
 		else
-			exit_error("Error: File can not open", 1);
+			exit_free_cub("Error: Wrong file name", 1, cub);
 	}
 	else
-		exit_error("Error: Wrong file name", 1);
+		exit_free_cub("Error: Wrong file name", 1, cub);
 }
 
 static char	*cub_str_allocate(char *name)
@@ -87,7 +87,7 @@ void	map_allocate(t_cub *cub)
 
 void	map_checker(char *name, t_cub *cub)
 {
-	name_check(name);
+	name_check(name, cub);
 	cub->game.map_str = cub_str_allocate(name);
 	cub_texture_allocate(cub);
 	map_allocate(cub);

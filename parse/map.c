@@ -136,11 +136,17 @@ void	find_player_pos(t_cub *cub, char **map_copy, int *px, int *py)
 void	flood_fill_rec(t_cub *cub, char **map_copy, int x, int y)
 {
 	if (y < 0 || x < 0 || !map_copy[y] || !map_copy[y][x])
+	{
+		free_double(map_copy);
 		exit_free_cub("Error: Map is not closed!", 1, cub);
+	}
 	if (map_copy[y][x] == '1' || map_copy[y][x] == 'F' || map_copy[y][x] == '_')
 		return ;
 	if (map_copy[y][x] == ' ')
+	{
+		free_double(map_copy);
 		exit_free_cub("Error: Map is not closed!", 1, cub);
+	}
 	map_copy[y][x] = 'F';
 	flood_fill_rec(cub, map_copy, x + 1, y);
 	flood_fill_rec(cub, map_copy, x - 1, y);
