@@ -170,5 +170,17 @@ void				calc_wall_metrics(t_cub *cub);
 void				calc_tex_coords(t_cub *cub);
 void				raycast(t_cub *cub);
 void				free_double(char **double_str);
+void				player_check(t_cub *cub);
+void				invalid_character_check(t_cub *cub);
+void				fill_map_row(char **dest, char *src,
+						int max_len, t_cub *cub);
+char				**normalize_map(t_cub *cub);
+void				find_player_pos(t_cub *cub, char **map_copy,
+						int *px, int *py);
+void				init_texture_north(t_cub *cub, int *i);
+void				init_texture_south(t_cub *cub, int *i);
+void				init_texture_east(t_cub *cub, int *i);
+void				init_texture_west(t_cub *cub, int *i);
+void				free_cub(t_cub *cub);
 
 #endif

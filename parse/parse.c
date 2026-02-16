@@ -26,7 +26,7 @@ void	map_height_width(t_cub *cub)
 
 void	parse(char **av, t_cub *cub)
 {
-	char *name;
+	char	*name;
 
 	name = av[1];
 	map_checker(name, cub);
@@ -34,7 +34,6 @@ void	parse(char **av, t_cub *cub)
 	cub_fc_error(cub);
 	cub_map_error(cub);
 	map_height_width(cub);
-
 	printf("After Cub3d Allocation!\n ************** \n");
 	printf("%s\n", cub->game.map_str);
 	printf("After element Allocation!\n ************** \n");
@@ -46,5 +45,4 @@ void	parse(char **av, t_cub *cub)
 	printf("Ceiling Texture: %s\n", cub->texture.c);
 	printf("********************\n");
 	printf("Real Map String:\n%s\n", cub->game.real_map_str);
-	
 }

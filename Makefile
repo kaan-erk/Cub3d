@@ -16,6 +16,10 @@ PARSING =  parse/parse.c \
 			parse/map_texture.c \
 			parse/floor_ceiling.c \
 			parse/parse_error.c \
+			parse/fc_utils.c \
+			parse/floodfill.c \
+			parse/init_texture.c \
+			parse/free_cub.c \
 			parse/map.c
 
 SRC = src/get_next_line.c \

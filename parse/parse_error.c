@@ -12,42 +12,6 @@
 
 #include "../inc/cub3d.h"
 
-void	free_cub(t_cub *cub)
-{
-	int	i;
-
-	if (!cub)
-		return ;
-	if (cub->texture.north)
-		free(cub->texture.north);
-	if (cub->texture.south)
-		free(cub->texture.south);
-	if (cub->texture.east)
-		free(cub->texture.east);
-	if (cub->texture.west)
-		free(cub->texture.west);
-	if (cub->texture.f)
-		free(cub->texture.f);
-	if (cub->texture.c)
-		free(cub->texture.c);
-	if (cub->game.map)
-	{
-		i = 0;
-		while (cub->game.map[i])
-		{
-			free(cub->game.map[i]);
-			i++;
-		}
-		free(cub->game.map);
-		cub->game.map = NULL;
-	}
-	if (cub->game.map_str)
-		free(cub->game.map_str);
-	if (cub->game.real_map_str)
-		free(cub->game.real_map_str);
-	free(cub);
-}
-
 int	is_xpm(char *str)
 {
 	int	len;
