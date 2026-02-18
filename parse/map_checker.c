@@ -26,7 +26,7 @@ static void	name_check(char *name, t_cub *cub)
 	i = 0;
 	if (name[0] == '\0')
 		exit_free_cub("Error: Wrong file name", 1, cub);
-	while (name[i] != '.')
+	while (name[i] != '.' && name[i] != '\0')
 		i++;
 	if (ft_strncmp(name + i, ".cub", 4) == 0 && name[i + 4] == '\0')
 	{
