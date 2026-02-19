@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysoyturk <ysoyturk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ktoraman < ktoraman@student.42istanbul.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 14:44:35 by ktoraman          #+#    #+#             */
-/*   Updated: 2026/02/12 20:23:55 by ysoyturk         ###   ########.fr       */
+/*   Updated: 2026/02/19 17:23:43 by ktoraman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,7 @@ int	main(int ac, char **av)
 		parse(av, cub);
 	else
 		exit_free_cub("Error: Wrong number of arguments!", 1, cub);
-	printf("\n");
 	player_pos(cub);
 	player_dir(cub);
 	initialize_mlx(cub);
-	printf("BAŞARILI\n");
 }
-
-// valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes 
-// --suppressions=mlx.supp ./cub3D test.cub

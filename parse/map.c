@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysoyturk <ysoyturk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ktoraman < ktoraman@student.42istanbul.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 20:11:13 by ktoraman          #+#    #+#             */
-/*   Updated: 2026/02/12 20:34:31 by ysoyturk         ###   ########.fr       */
+/*   Updated: 2026/02/19 17:19:20 by ktoraman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,17 +65,9 @@ static void	flood_fill(t_cub *cub, char **map_copy)
 static void	map_flood_fill(t_cub *cub)
 {
 	char	**map_copy;
-	int		i;
 
 	map_copy = normalize_map(cub);
 	flood_fill(cub, map_copy);
-	printf("Normalized Map:\n");
-	i = 0;
-	while (map_copy[i])
-	{
-		printf("%s\n", map_copy[i]);
-		i++;
-	}
 	free_double(map_copy);
 }
 
