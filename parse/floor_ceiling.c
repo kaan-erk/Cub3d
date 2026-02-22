@@ -82,12 +82,13 @@ static void	check_fc_data(char **f, char **c, t_cub *cub)
 	i = -1;
 	while (++i < 3)
 	{
-		if (ft_atoi(f[i]) < 0 || ft_atoi(f[i]) > 255
+		if (ft_strlen(f[i]) > 3 || ft_strlen(c[i]) > 3
+			|| ft_atoi(f[i]) < 0 || ft_atoi(f[i]) > 255
 			|| ft_atoi(c[i]) < 0 || ft_atoi(c[i]) > 255)
 		{
 			free_split(f);
 			free_split(c);
-			exit_free_cub("Error: RGB values must be 0-255", 1, cub);
+			exit_free_cub("Error: RGB must be 0-255 and max 3 digits", 1, cub);
 		}
 	}
 }
