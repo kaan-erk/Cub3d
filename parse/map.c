@@ -6,34 +6,28 @@
 /*   By: ktoraman < ktoraman@student.42istanbul.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 20:11:13 by ktoraman          #+#    #+#             */
-/*   Updated: 2026/02/23 13:52:50 by ktoraman         ###   ########.fr       */
+/*   Updated: 2026/02/23 15:22:20 by ktoraman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
-void	flood_fill_rec(t_cub *cub, char **map_copy, int x, int y)
+static int	is_surrounding_invalid(char **map, int x, int y)
 {
-	if (y < 0 || x < 0 || !map_copy[y] || !map_copy[y][x])
-	{
-		free_double(map_copy);
-		exit_free_cub("Error: Map is not closed!", 1, cub);
-	}
-	if (map_copy[y][x] == '1' || map_copy[y][x] == 'F')
-		return ;
-	if (map_copy[y][x] == ' ' || map_copy[y][x] == '_')
-	{
-		free_double(map_copy);
-		exit_free_cub("Error: Map is not closed!", 1, cub);
-	}
-	map_copy[y][x] = 'F';
-	flood_fill_rec(cub, map_copy, x + 1, y);
-	flood_fill_rec(cub, map_copy, x - 1, y);
-	flood_fill_rec(cub, map_copy, x, y + 1);
-	flood_fill_rec(cub, map_copy, x, y - 1);
+	if (y == 0 || x == 0 || !map[y + 1] || !map[y][x + 1])
+		return (1);
+	if (map[y - 1][x] == ' ' || map[y - 1][x] == '_')
+		return (1);
+	if (map[y + 1][x] == ' ' || map[y + 1][x] == '_')
+		return (1);
+	if (map[y][x - 1] == ' ' || map[y][x - 1] == '_')
+		return (1);
+	if (map[y][x + 1] == ' ' || map[y][x + 1] == '_')
+		return (1);
+	return (0);
 }
 
-static void	check_unvisited_zero(t_cub *cub, char **map_copy)
+static void	mark_playable_areas(char **map_copy)
 {
 	int	y;
 	int	x;
@@ -44,50 +38,59 @@ static void	check_unvisited_zero(t_cub *cub, char **map_copy)
 		x = 0;
 		while (map_copy[y][x])
 		{
-			if (map_copy[y][x] == '0')
-				exit_free_cub("Error: Unreachable area in map!", 1, cub);
+			if (map_copy[y][x] == '0' || map_copy[y][x] == 'N' ||
+				map_copy[y][x] == 'S' || map_copy[y][x] == 'E' ||
+				map_copy[y][x] == 'W')
+				map_copy[y][x] = 'F';
 			x++;
 		}
 		y++;
 	}
 }
 
-static void	flood_fill(t_cub *cub, char **map_copy)
+static void	check_f_surroundings(t_cub *cub, char **map_copy)
 {
-	int	px;
-	int	py;
+	int	y;
+	int	x;
 
-	find_player_pos(cub, map_copy, &px, &py);
-	flood_fill_rec(cub, map_copy, px, py);
-	check_unvisited_zero(cub, map_copy);
+	y = 0;
+	while (map_copy[y])
+	{
+		x = 0;
+		while (map_copy[y][x])
+		{
+			if (map_copy[y][x] == 'F')
+			{
+				if (is_surrounding_invalid(map_copy, x, y))
+				{
+					free_double(map_copy);
+					exit_free_cub("Error: Map is not closed!", 1, cub);
+				}
+			}
+			x++;
+		}
+		y++;
+	}
 }
 
-static void	map_flood_fill(t_cub *cub)
+static void	validate_map_walls(t_cub *cub)
 {
 	char	**map_copy;
-	int		i;
 
 	map_copy = normalize_map(cub);
-	flood_fill(cub, map_copy);
-	printf("Normalized Map:\n");
-	i = 0;
-	while (map_copy[i])
-	{
-		printf("%s\n", map_copy[i]);
-		i++;
-	}
+	if (!map_copy)
+		exit_free_cub("Error: Memory allocation failed", 1, cub);
+	mark_playable_areas(map_copy);
+	check_f_surroundings(cub, map_copy);
 	free_double(map_copy);
 }
 
 void	cub_map_error(t_cub *cub)
 {
-	char	**temp_split;
-
 	player_check(cub);
 	invalid_character_check(cub);
-	temp_split = ft_split(cub->game.real_map_str, '\n');
-	cub->game.map = temp_split;
+	cub->game.map = ft_split(cub->game.real_map_str, '\n');
 	if (!cub->game.map)
-		exit_free_cub("Error: Memory allocation failed\n", 1, cub);
-	map_flood_fill(cub);
+		exit_free_cub("Error: Memory allocation failed", 1, cub);
+	validate_map_walls(cub);
 }

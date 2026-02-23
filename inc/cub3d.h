@@ -6,7 +6,7 @@
 /*   By: ktoraman < ktoraman@student.42istanbul.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 14:42:41 by ktoraman          #+#    #+#             */
-/*   Updated: 2026/02/19 17:24:00 by ktoraman         ###   ########.fr       */
+/*   Updated: 2026/02/23 16:30:35 by ktoraman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,6 +180,8 @@ void				init_texture_north(t_cub *cub, int *i);
 void				init_texture_south(t_cub *cub, int *i);
 void				init_texture_east(t_cub *cub, int *i);
 void				init_texture_west(t_cub *cub, int *i);
+long long			ft_atoll(const char *str);
+void				free_split(char **arr);
 void				free_cub(t_cub *cub);
 
 #endif

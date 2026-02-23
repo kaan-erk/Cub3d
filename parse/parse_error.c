@@ -6,7 +6,7 @@
 /*   By: ktoraman < ktoraman@student.42istanbul.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 20:11:58 by ktoraman          #+#    #+#             */
-/*   Updated: 2026/02/19 17:07:15 by ktoraman         ###   ########.fr       */
+/*   Updated: 2026/02/23 16:35:05 by ktoraman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,19 @@ void	cub_texture_error(t_cub *cub)
 	{
 		exit_free_cub("Error: One or more texture paths are missing", 1, cub);
 	}
+}
+
+void	free_split(char **arr)
+{
+	int	i;
+
+	if (!arr)
+		return ;
+	i = 0;
+	while (arr[i])
+	{
+		free(arr[i]);
+		i++;
+	}
+	free(arr);
 }
