@@ -1,5 +1,5 @@
-This project has been created as part of the 42 curriculum by <ktoraman>, <ysoyturk>.
-Description
+*This project has been created as part of the 42 curriculum by <ktoraman>, <ysoyturk>.*
+##Description
 
 cub3D is a 42 school project that challenges students to create a "realistic" 3D graphical representation of a maze from a first-person perspective. Inspired by the world-famous 1992 game Wolfenstein 3D, this project serves as a deep dive into the world of Raycasting.
 
@@ -15,7 +15,7 @@ Key Features
     Map Parsing: A robust system to read and validate .cub files, ensuring the map is enclosed by walls.
 
 Instructions
-Prerequisites
+##Prerequisites
 
 You must have the MiniLibX library (MLX) installed and configured for your specific operating system (Linux or macOS).
 Compilation
@@ -33,7 +33,7 @@ Bash
 
 ./cub3D maps/test_map.cub
 
-Controls
+##Controls
 
     W / S: Move forward and backward.
 
@@ -43,7 +43,7 @@ Controls
 
     ESC: Exit the game.
 
-Resources
+##Resources
 Classic References
 
     Lode's Raycasting Tutorial: The foundational guide for understanding the math behind ray-camera planes and DDA.
@@ -52,7 +52,7 @@ Classic References
 
     Computer Graphics: Principles and Practice: For a broader understanding of rendering pipelines.
 
-Use of AI
+##Use of AI
 
 For this project, AI was utilized as a primary tool for documentation and resource acquisition. Specifically:
 

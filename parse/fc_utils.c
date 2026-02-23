@@ -6,7 +6,7 @@
 /*   By: ktoraman < ktoraman@student.42istanbul.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 17:07:53 by ktoraman          #+#    #+#             */
-/*   Updated: 2026/02/19 17:07:54 by ktoraman         ###   ########.fr       */
+/*   Updated: 2026/02/23 13:57:36 by ktoraman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ void	init_texture_floor(t_cub *cub, int *i)
 	while (cub->game.map_str[start] == ' ')
 		start++;
 	len = 0;
-	while (cub->game.map_str[start + len] && cub->game.map_str[start + len] != '\n')
+	while (cub->game.map_str[start + len]
+		&& cub->game.map_str[start + len] != '\n')
 		len++;
 	*i = start + len;
 	real_len = len;
@@ -44,7 +45,8 @@ void	init_texture_ceiling(t_cub *cub, int *i)
 	while (cub->game.map_str[start] == ' ')
 		start++;
 	len = 0;
-	while (cub->game.map_str[start + len] && cub->game.map_str[start + len] != '\n')
+	while (cub->game.map_str[start + len]
+		&& cub->game.map_str[start + len] != '\n')
 		len++;
 	*i = start + len;
 	real_len = len;

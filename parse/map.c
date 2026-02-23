@@ -6,7 +6,7 @@
 /*   By: ktoraman < ktoraman@student.42istanbul.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 20:11:13 by ktoraman          #+#    #+#             */
-/*   Updated: 2026/02/19 17:19:20 by ktoraman         ###   ########.fr       */
+/*   Updated: 2026/02/23 13:52:50 by ktoraman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	flood_fill_rec(t_cub *cub, char **map_copy, int x, int y)
 		free_double(map_copy);
 		exit_free_cub("Error: Map is not closed!", 1, cub);
 	}
-	if (map_copy[y][x] == '1' || map_copy[y][x] == 'F' || map_copy[y][x] == '_')
+	if (map_copy[y][x] == '1' || map_copy[y][x] == 'F')
 		return ;
-	if (map_copy[y][x] == ' ')
+	if (map_copy[y][x] == ' ' || map_copy[y][x] == '_')
 	{
 		free_double(map_copy);
 		exit_free_cub("Error: Map is not closed!", 1, cub);
@@ -65,9 +65,17 @@ static void	flood_fill(t_cub *cub, char **map_copy)
 static void	map_flood_fill(t_cub *cub)
 {
 	char	**map_copy;
+	int		i;
 
 	map_copy = normalize_map(cub);
 	flood_fill(cub, map_copy);
+	printf("Normalized Map:\n");
+	i = 0;
+	while (map_copy[i])
+	{
+		printf("%s\n", map_copy[i]);
+		i++;
+	}
 	free_double(map_copy);
 }
 
